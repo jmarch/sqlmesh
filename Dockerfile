@@ -1,7 +1,6 @@
 FROM python:3-bookworm
 
-RUN apt-get update && apt-get install \
-    git
+RUN apt-get update
 
 RUN pip3 install --upgrade pip setuptools wheel --no-cache-dir
 RUN pip3 install --no-cache-dir 'sqlmesh[web]'
