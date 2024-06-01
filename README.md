@@ -29,6 +29,31 @@ Install SQLMesh through [pypi](https://pypi.org/project/sqlmesh/) by running:
 
 Follow the [tutorial](https://sqlmesh.readthedocs.io/en/stable/quick_start/) to learn how to use SQLMesh.
 
+## Docker
+Build the base docker image by running:
+
+```docker build -t sqlmesh .```
+
+This base image has a default SQLMesh project initialized with the duckdb dialect.
+
+To run a container, serving up this default project through the SQLMesh UI:
+
+```docker run --rm -p 8000:8000 -it sqlmesh```
+
+Alternatively, the SQLMesh image can be used for interactive CLI testing by running:
+
+```docker run --rm -p 8000:8000 -it sqlmesh /bin/bash```
+
+To manually start the SQLMesh UI from this interactive container, run:
+
+```sqlmesh ui --host 0.0.0.0```
+
+Docker Compose can also be used to create a private sqlmesh docker network with a container hosting the SQLMesh UI by running:
+
+```docker-compose up```
+
+For more customization of the docker environment, additional service containers can be added to the docker-compose.yaml file.
+
 ## Join our community
 We'd love to join you on your data journey. Connect with us in the following ways:
 
