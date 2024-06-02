@@ -6,6 +6,28 @@ services:
       - sqlmesh
     ports:
       - "8000:8000"
+  mssql:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: mssql
+    environment:
+      - "ACCEPT_EULA=Y"
+      - "MSSQL_SA_PASSWORD=myStrong@Passw0rd"
+    ports:
+      - "1433:1433"
+    profiles:
+      - mssql
+  postgres:
+    image: postgres:latest
+    container_name: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD='myStrong@Passw0rd'
+    ports:
+      - '5432:5432'
+    shm_size: 128mb
+    profiles:
+      - postgres
 
 networks:
   sqlmesh:
+    driver: bridge
